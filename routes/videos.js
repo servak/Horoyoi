@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
     where = 'where ' + filter.join(' AND ')
   }
   const db = await dbPromise
-  rows = await db.all(`select id, category, title, subtitle, episode from video ${where} limit 100;`)
+  rows = await db.all(`select id, category, title, subtitle, episode, start from video ${where} order by end desc limit 100;`)
   res.send(rows)
 });
 

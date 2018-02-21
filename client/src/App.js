@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import VideoIndex from './pages/VideoIndex'
 import VideoShow from './pages/VideoShow'
 
+
 class App extends Component {
   render() {
     return (
