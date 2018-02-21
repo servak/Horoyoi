@@ -51,7 +51,7 @@ class Videos extends Component {
         <GridList cellHeight={360} cols={3}>
           {tiles.map(tile => (
             <GridListTile key={tile.id} component={Link} to={process.env.PUBLIC_URL + "/videos/" + tile.id}>
-              <img src={process.env.PUBLIC_URL + "/videos/" + tile.id + '.png'} alt={tile.title} />
+              <img src={process.env.PUBLIC_URL + "/contents/" + tile.id + '.png'} alt={tile.title} />
               <GridListTileBar
                 title={tile.title}
                 subtitle={<span>{tile.subtitle}</span>}

@@ -9,7 +9,7 @@ router.get('/:id.mp4', async function(req, res) {
   let mp4 = __dirname + '/../videos/' + id + '.mp4';
   if (!fs.existsSync(mp4)) {
     // for develop
-    mp4 = __dirname + '/../sample.mp4';
+    mp4 = __dirname + '/../videos/sample.mp4';
   }
 
   var stat = fs.statSync(mp4), total = stat.size;
@@ -43,7 +43,7 @@ router.get('/:id.png', function(req, res) {
   var path = __dirname + '/../thumbnails/' + id + '.png';
   if (!fs.existsSync(path)) {
     // for develop
-    path = __dirname + '/../sample.png';
+    path = __dirname + '/../thumbnails/sample.png';
   }
 
   var stat = fs.statSync(path);
