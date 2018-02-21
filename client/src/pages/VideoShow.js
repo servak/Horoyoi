@@ -117,8 +117,8 @@ class VideoPlayer extends Component {
   render() {
     const { classes, id } = this.props;
     const { video } = this.state;
-    const url = '/videos/' + id + '.mp4'
-    const thumbnail = '/videos/' + id + '.png'
+    const url = '/contents/' + id + '.mp4'
+    const thumbnail = '/contents/' + id + '.png'
     const castimg = this.state.casting ? (<CastConnected />): (<Cast />);
     return (
       <div>

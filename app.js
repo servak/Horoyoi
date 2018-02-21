@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/', index);
-app.use('/videos', contents);
+app.use('/contents', contents);
 app.use('/api/videos', videos);
 app.use('/api/casts', casts);
 

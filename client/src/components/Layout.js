@@ -10,11 +10,8 @@ import {ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-import InboxIcon from 'material-ui-icons/MoveToInbox';
-import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
-import ChevronRightIcon from 'material-ui-icons/ChevronRight';
-import { Link } from 'react-router-dom';
+import {Pets, InsertEmoticon, Favorite, EventSeat} from 'material-ui-icons';
+import {Menu, ChevronLeft, ChevronRight} from 'material-ui-icons';
 
 const drawerWidth = 240;
 
@@ -68,7 +65,7 @@ const styles = theme => ({
     width: '100%',
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    paddingTop: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -129,19 +126,43 @@ class Layout extends React.Component {
         <div className={classes.drawerInner}>
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+              {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
             </IconButton>
           </div>
           <Divider />
           <List>
-            <Link to={process.env.PUBLIC_URL + "/videos"}>
+            <a href={process.env.PUBLIC_URL + "/anime"}>
               <ListItem>
                 <ListItemIcon>
-                  <InboxIcon />
+                  <Pets />
                 </ListItemIcon>
-                <ListItemText primary="Inbox" />
+                <ListItemText primary="Anime" />
               </ListItem>
-            </Link>
+            </a>
+            <a href={process.env.PUBLIC_URL + "/variety"}>
+              <ListItem>
+                <ListItemIcon>
+                  <InsertEmoticon />
+                </ListItemIcon>
+                <ListItemText primary="Variety" />
+              </ListItem>
+            </a>
+            <a href={process.env.PUBLIC_URL + "/drama"}>
+              <ListItem>
+                <ListItemIcon>
+                  <Favorite />
+                </ListItemIcon>
+                <ListItemText primary="Drama" />
+              </ListItem>
+            </a>
+            <a href={process.env.PUBLIC_URL + "/cinema"}>
+              <ListItem>
+                <ListItemIcon>
+                  <EventSeat />
+                </ListItemIcon>
+                <ListItemText primary="Cinema" />
+              </ListItem>
+            </a>
           </List>
         </div>
       </Drawer>
@@ -164,7 +185,7 @@ class Layout extends React.Component {
                 onClick={this.handleDrawerOpen}
                 className={classNames(classes.menuButton, open && classes.hide)}
               >
-                <MenuIcon />
+                <Menu />
               </IconButton>
               <Typography variant="title" color="inherit" noWrap>
                 Horoyoi

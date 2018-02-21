@@ -13,7 +13,7 @@ client.connect(host, function() {
 });
 
 router.post('/play', async function(req, res, next) {
-  const server = req.protocol + '://' + req.get('host') + '/videos/'
+  const server = req.protocol + '://' + req.get('host') + '/contents/'
   let content = SAMPLE
   if ('id' in req.body) {
     content = server + req.body.id + '.mp4'

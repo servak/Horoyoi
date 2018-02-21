@@ -1,6 +1,3 @@
 node_modules
-database.sqlite
-thumbnails
-videos
-sample.mp4
-sample.png
+db/database.sqlite
+videos/sample.mp4
