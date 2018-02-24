@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// material-ui
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import TextField from 'material-ui/TextField';
 import List from 'material-ui/List';
 import {ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
@@ -14,22 +15,16 @@ import IconButton from 'material-ui/IconButton';
 import {Pets, InsertEmoticon, Favorite, EventSeat} from 'material-ui-icons';
 import {Menu, ChevronLeft, ChevronRight} from 'material-ui-icons';
 
+// redux
+import {connect} from 'react-redux'
+import {handleDrawer, setVideoSearch} from '../actions'
+
+// custom Component
+import AppSearch from './AppSearch'
+
 const drawerWidth = 240;
 
 const styles = theme => ({
-  appFrame: {
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-  },
-  appBar: {
-    position: 'absolute',
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['margin', 'width'], {
@@ -101,23 +96,15 @@ const styles = theme => ({
   }
 });
 
-class Layout extends React.Component {
-  state = {
-    open: false,
-    search: '',
-  };
-
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
+class Header extends React.Component {
+  static propTypes = {
+    handleDrawer: PropTypes.func.isRequired,
+    setVideoSearch: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+  }
 
   render() {
-    const { classes, theme, contents } = this.props;
-    const { open } = this.state;
+    const { classes, theme, open, handleDrawer, setVideoSearch } = this.props;
 
     const drawer = (
       <Drawer
@@ -130,7 +117,7 @@ class Layout extends React.Component {
       >
         <div className={classes.drawerInner}>
           <div className={classes.drawerHeader}>
-            <IconButton onClick={this.handleDrawerClose}>
+            <IconButton onClick={e => handleDrawer(false)}>
               {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
             </IconButton>
           </div>
@@ -175,47 +162,35 @@ class Layout extends React.Component {
 
 
     return (
-      <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <AppBar
-            className={classNames(classes.appBar, {
-              [classes.appBarShift]: open,
-              [classes[`appBarShift-left`]]: open,
-            })}
-          >
-            <Toolbar disableGutters={!open}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, open && classes.hide)}
-              >
-                <Menu />
-              </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
-                Horoyoi
-              </Typography>
-              <TextField hintText="検索ワード" floatingLabelText="Enterで検索" className={classes.flex} />
-            </Toolbar>
-          </AppBar>
-          {drawer}
-          <main
-            className={classNames(classes.content, classes[`content-left`], {
-              [classes.contentShift]: open,
-              [classes[`contentShift-left`]]: open,
-            })}
-          >
-            {contents}
-          </main>
-        </div>
+      <div >
+        <AppBar
+          className={classNames(classes.appBar, {
+            [classes.appBarShift]: open,
+            [classes[`appBarShift-left`]]: open,
+          })}
+        >
+          <Toolbar disableGutters={!open}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={e => handleDrawer(true)}
+              className={classNames(classes.menuButton, open && classes.hide)}
+            >
+              <Menu />
+            </IconButton>
+            <Typography variant="title" color="inherit" noWrap>
+              Horoyoi
+            </Typography>
+            <AppSearch width={'100px'} onHandleChange={setVideoSearch} />
+          </Toolbar>
+        </AppBar>
+        {drawer}
       </div>
     );
   }
 }
 
-Layout.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles, { withTheme: true })(Layout);
+export default connect(
+  state => ({ open: state.session.open }),
+  {handleDrawer, setVideoSearch}
+)(withStyles(styles, { withTheme: true })(Header))
