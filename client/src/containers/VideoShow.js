@@ -9,8 +9,6 @@ import { Cast, CastConnected } from 'material-ui-icons';
 import { DirectionsWalk, DirectionsRun, DirectionsBike, Flight, PlayArrow } from 'material-ui-icons';
 import { Forward10, Forward30, Replay5, Replay10, Replay30 } from 'material-ui-icons';
 
-import Layout from '../components/Layout'
-
 const styles = theme => ({
   paper: {
     width: '100%',
@@ -163,12 +161,9 @@ class VideoShow extends Component {
   render() {
     const { id } = this.props.match.params
     const { classes } = this.props
-    const contents = (
-      <VideoPlayer id={id} classes={classes} />
-    )
     return (
       <div className="App">
-        <Layout contents={contents} />
+        <VideoPlayer id={id} classes={classes} />
       </div>
     );
   }
