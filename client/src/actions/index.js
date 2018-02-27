@@ -33,13 +33,12 @@ const fetchVideosClient = async (category='all', title='') => {
   }
 
   url += '?' + reqQuery.join('&')
-  const response = await fetch(url, {})
+  const response = await fetch(url, {credentials: "same-origin"})
   return await response.json()
 }
 
 
 export const fetchVideos = (category='all') => async (dispatch, getState) => {
-  console.log(category, getState())
   const {session} = getState()
   const searchText = session.searchText
   const r = await fetchVideosClient(category, searchText)

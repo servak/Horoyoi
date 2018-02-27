@@ -14,7 +14,7 @@ class VideoPlayer extends Component {
 
   async componentDidMount() {
     const { id } = this.props;
-    const response = await fetch('/api/videos/' + id, {})
+    const response = await fetch('/api/videos/' + id, {credentials: "same-origin"})
     const obj = await response.json()
     this.setState({video: obj})
   }
@@ -42,6 +42,7 @@ class VideoPlayer extends Component {
           'content-type': 'application/json'
         },
         body: payload,
+        credentials: "same-origin",
       }).then(function(response) {
         console.log(response);
       })
@@ -63,6 +64,7 @@ class VideoPlayer extends Component {
           'content-type': 'application/json'
         },
         body: payload,
+        credentials: "same-origin",
       }).then(function(response) {
         console.log(response);
       })
@@ -86,6 +88,7 @@ class VideoPlayer extends Component {
         'content-type': 'application/json'
       },
       body: payload,
+      credentials: "same-origin",
     }).then(function(response) {
       that.setState({
         casting: true,
