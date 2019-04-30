@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import GridList, { GridListTile, GridListTileBar } from '@material-ui/core/GridList';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 import { Link } from 'react-router-dom';
 import { detailFormatToJa } from '../utils'
 
