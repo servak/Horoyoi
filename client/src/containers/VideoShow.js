@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
-import { Cast, CastConnected } from 'material-ui-icons';
-import { DirectionsWalk, DirectionsRun, DirectionsBike, Flight, PlayArrow } from 'material-ui-icons';
-import { Forward10, Forward30, Replay5, Replay10, Replay30 } from 'material-ui-icons';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import BottomNavigation, { BottomNavigationAction } from '@material-ui/core/BottomNavigation';
+import { Cast, CastConnected } from '@material-ui/icons';
+import { DirectionsWalk, DirectionsRun, DirectionsBike, Flight, PlayArrow } from '@material-ui/icons';
+import { Forward10, Forward30, Replay5, Replay10, Replay30 } from '@material-ui/icons';
 
 const styles = theme => ({
   paper: {

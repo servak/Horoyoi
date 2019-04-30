@@ -3,7 +3,7 @@ import './App.css';
 
 // components
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Header from './components/Header'
 

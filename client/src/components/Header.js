@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // material-ui
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import List from 'material-ui/List';
-import {ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Typography from 'material-ui/Typography';
-import Divider from 'material-ui/Divider';
-import IconButton from 'material-ui/IconButton';
-import {Pets, InsertEmoticon, Favorite, EventSeat} from 'material-ui-icons';
-import {Menu, ChevronLeft, ChevronRight} from 'material-ui-icons';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import {ListItem, ListItemIcon, ListItemText } from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import {Pets, InsertEmoticon, Favorite, EventSeat} from '@material-ui/icons';
+import {Menu, ChevronLeft, ChevronRight} from '@material-ui/icons';
 
 // redux
 import {connect} from 'react-redux'
